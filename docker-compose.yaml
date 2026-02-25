@@ -1,0 +1,53 @@
+services:
+  mongodb:
+   image: "mongo:latest"
+   container_name: mongodb
+   volumes:
+      - mongodata:/data/db
+   networks:
+      - expense-network
+   expose:
+      - 27017
+   restart: unless-stopped
+  backend:
+   build:
+     context : .
+     dockerfile : dockerfile
+   
+   container_name: expenseBackend
+   ports:
+       - 8000:8000
+   # environment:
+   #   - NODE_ENV=production
+   #   - PORT=8000
+   #   - MONGO_URI=mongodb://mongodb:27017/expenseproject
+   #   - JWT_SECRET=11223344
+   env_file: 
+     - .env
+   networks:
+     - expense-network
+     - gateway-network
+   depends_on:
+     - mongodb
+   restart: unless-stopped
+
+  frontend:
+    build:
+        context : .
+        dockerfile : ./frontend/dockerfile
+        args:
+         VITE_API_URL : http://backend:8000
+    container_name: expenseFrontend
+    ports:
+       - 3000:80
+    networks:
+       - gateway-network
+    depends_on: 
+       - backend
+    restart: unless-stopped
+
+networks:
+     expense-network:
+     gateway-network:
+volumes: 
+     mongodata:
