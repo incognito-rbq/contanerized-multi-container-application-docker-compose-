@@ -1,4 +1,4 @@
-
+<img width="1024" height="1536" alt="networkarcitecture" src="https://github.com/user-attachments/assets/f7830ba6-1efc-4761-8c8d-067c33cf698f" />
 # 💻 Containerized Multi-Container Application with Docker Compose
 
 This is a Dockerized setup for a multi-container application using Docker Compose. The project utilizes several containers to handle various services, providing a fully isolated environment for development.
@@ -28,27 +28,7 @@ This project is built with Docker to containerize the application and Docker Com
 - Scalable and easily extendable for more services.
   
 - implemented a network-segmented Docker architecture
-                  🌐 User (Browser)
-                        │
-                        ▼
-                ┌───────────────────┐
-                │   Frontend (Nginx)│
-                │   Port: 3000      │
-                └────────┬──────────┘
-                         │
-                         │ (gateway-network)
-                         ▼
-                ┌───────────────────┐
-                │   Backend (Node)  │
-                │   Port: 8000      │
-                └────────┬──────────┘
-                         │
-                         │ (expense-network)
-                         ▼
-                ┌───────────────────┐
-                │   MongoDB         │
-                │   Port: 27017     │
-                └───────────────────┘
+                <img width="1024" height="1536" alt="networkarcitecture" src="https://github.com/user-attachments/assets/1c791f95-6378-43d3-9eb2-ed88a1e8c969" />
 
 ## Setup Instructions
 
