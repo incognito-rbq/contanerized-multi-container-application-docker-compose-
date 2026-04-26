@@ -26,6 +26,29 @@ This project is built with Docker to containerize the application and Docker Com
 - Easily configurable with `.env` files.
 - Isolation of services for more consistent environments across different systems.
 - Scalable and easily extendable for more services.
+  
+- implemented a network-segmented Docker architecture
+                  🌐 User (Browser)
+                        │
+                        ▼
+                ┌───────────────────┐
+                │   Frontend (Nginx)│
+                │   Port: 3000      │
+                └────────┬──────────┘
+                         │
+                         │ (gateway-network)
+                         ▼
+                ┌───────────────────┐
+                │   Backend (Node)  │
+                │   Port: 8000      │
+                └────────┬──────────┘
+                         │
+                         │ (expense-network)
+                         ▼
+                ┌───────────────────┐
+                │   MongoDB         │
+                │   Port: 27017     │
+                └───────────────────┘
 
 ## Setup Instructions
 
